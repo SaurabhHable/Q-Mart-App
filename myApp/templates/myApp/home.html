@@ -1,0 +1,24 @@
+{% extends 'myApp/base.html' %}
+
+{% block title %}
+    Q-Mart Products Registration
+{% endblock %}
+{% block content %}
+{% load widget_tweaks %}
+
+<div class="container">
+    <hr>
+    <div class="p-4 m-4">
+        <div class="form-group col-lg-5 mx-auto border rounded pt-4 pb-3">
+            <h3 class="alert alert-light border rounded text-center">Add a product</h3>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="save" class="btn btn-sm btn-info" id="btn-save">
+            </form>
+        </div>
+    </div>
+    <hr>
+</div>
+
+{% endblock %}

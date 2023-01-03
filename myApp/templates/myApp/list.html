@@ -1,0 +1,59 @@
+{% extends 'myApp/base.html' %}
+
+{% block title %}
+    Q-Mart Products
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-3">
+    <div class="row">
+      {% comment %} Filter {% endcomment %}
+      <div class="col-lg-3 mx-auto">
+        <h1 class="text-center">Categories</h1>
+        <!-- Hover added -->
+        <div class="list-group">
+           <a href="{% url 'list' %}" class="list-group-item list-group-item-action">All Products</a>
+           {% for ctgry in categories %}
+           <a href="?category={{ctgry.id}}" class="list-group-item list-group-item-action">{{ctgry.name}}</a>
+           {% endfor %}
+          
+        </div>
+      </div>
+      {% comment %} All products display {% endcomment %}
+      <div id="allproducts" class="col-lg-9 mx-auto">
+        <h1 class="text-center">Display of all the products</h1>
+        <div class="row  mx-auto">
+          {% for prod in products %}
+            <div class="col-sm-4">
+                <div class="card mb-3 bg-transparent border-success">
+                  <div class="card-header">
+                    <span class="d-flex justify-content-start"><b>₹ {{prod.price}} /-</b></span>
+                  </div>
+                  <img src="{{prod.image.url}}" alt="{{prod.name}}" class="rounded mx-auto d-block" height="300px" title="{{prod.name}}">
+                    <div>
+                        <h5 class="card-title text-center">
+                            {{ prod.name }}                      
+                        </h5>
+                    </div>
+                    <a class="btn btn-sm btn-info" data-bs-toggle="collapse" href="#eg" role="button" aria-expanded="false" aria-controls="eg">
+                      Description
+                    </a>
+                    <div class="collapse" id="eg">
+                      <div class="card card-body">
+                        {{prod.description}}
+                      </div>
+                    </div>
+                    <div class="card-footer text-muted d-flex justify-content-end">
+                      {{prod.availability}}
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+            
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
