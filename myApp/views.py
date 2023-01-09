@@ -12,6 +12,10 @@ def home(request):
     form = productRegistration()
     return render(request,'myApp/home.html', {'form':form})
 
+def login(request):
+    context = {}
+    return render(request,'myApp/login.html', context)
+
 def list(request):
     products = None
     categories = Category.get_all_categories()
