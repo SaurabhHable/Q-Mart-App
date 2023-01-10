@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block content %}
-
+{% for msg in messages %}
+<p>{{msg}}</p>
+{% endfor %}
 <div class="container-fluid mt-3">
     <div class="row">
       {% comment %} Filter {% endcomment %}
