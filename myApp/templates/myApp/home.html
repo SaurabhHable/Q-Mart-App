@@ -5,16 +5,52 @@
 {% endblock %}
 {% block content %}
 {% load widget_tweaks %}
-
+<style>
+    .form-inputs{
+        padding: 4px;
+        margin: 4px;
+    }
+</style>
 <div class="container">
     <hr>
-    <div class="p-4 m-4">
+    <div class="p-2 m-2">
         <div class="form-group col-lg-5 mx-auto border rounded pt-4 pb-3">
-            <h3 class="alert alert-light border rounded text-center">Add a product</h3>
+            <h3 class="alert alert-light border rounded text-center m-3">Add a product</h3>
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" value="save" class="btn btn-sm btn-info" id="btn-save">
+                <div class="add-product-form">
+                    <div class="form-inputs">
+                        <label for="image" class="form-label">Product Image:</label>
+                        {% render_field form.image class="form-control form-control-sm" width="300" height="300" id="image" name="image" %}
+                    </div>
+                    
+                    <div class="form-inputs">
+                        <label for="productName" class="form-label">Product name:</label>
+                        {% render_field form.name class="form-control form-control-sm" id="productName" name="name" placeholder="Mention the product name" %}
+                    </div>
+                    <div class="form-inputs">
+                        <label for="description" class="form-label">Description:</label>
+                        {% render_field form.description class="form-control form-control-sm" id="description" name="description" rows="3" placeholder="Mention product details" %}
+                    </div>
+                    
+                    <div class="form-inputs">
+                        <label for="price" class="form-label">Price:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">&#8377;</span>
+                            {% render_field form.price class="form-control form-control-sm" id="price" name="price" placeholder="Mention the price" %}
+                        </div>
+                    </div>
+                    <div class="form-inputs">
+                        <label for="availability" class="form-label">Availability:</label>
+                        {% render_field form.availability class="form-control form-control-sm" id="availability" name="availability" placeholder="Mention if the product is available or not" %}
+                    </div>
+                
+                    <div class="form-inputs">
+                        <label for="category" class="form-label">Select Category:</label>
+                        {% render_field form.category class="form-control form-control-sm" id="category" name="category" %}
+                    </div>
+                </div>
+                <input type="submit" value="save" class="btn btn-sm btn-info" style="margin-left : 15px" id="btn-save">
             </form>
         </div>
     </div>
