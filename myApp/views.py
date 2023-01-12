@@ -4,6 +4,8 @@ from .models import Product, Category
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+import requests
+import json
 
 # Create your views here.
 @login_required(login_url='login')
@@ -24,11 +26,24 @@ def loginPage(request):
         if request.method == 'POST':
             username = request.POST.get('username')
             password = request.POST.get('password')
+
+            #Recaptcha
+            clientKey = request.POST['g-recaptcha-response']
+            secretKey = '6LdvJ_AjAAAAAIxy_msVyLpGRMlIKDGVF7MsB35e'
+            captchaData = {
+                'secret':secretKey,
+                'response':clientKey
+            }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=captchaData)
+            response = json.loads(r.text)
+            verify = response['success']
     
             user = authenticate(request, username=username, password=password)
-            if user is not None:
+            if (user is not None) and (verify):
                 login(request, user)
                 return redirect('home')
+            elif (user is not None) and (not verify):
+                messages.info(request, 'Please fill the Recaptcha.')
             else:
                 messages.info(request, 'Username or Password is incorrect.')
         context = {}
