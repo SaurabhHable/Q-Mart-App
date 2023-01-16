@@ -21,7 +21,7 @@ def home(request):
 
 def loginPage(request):
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('list')
     else:
         if request.method == 'POST':
             username = request.POST.get('username')
@@ -41,7 +41,7 @@ def loginPage(request):
             user = authenticate(request, username=username, password=password)
             if (user is not None) and (verify):
                 login(request, user)
-                return redirect('home')
+                return redirect('login')
             elif (user is not None) and (not verify):
                 messages.info(request, 'Please fill the Recaptcha.')
             else:
