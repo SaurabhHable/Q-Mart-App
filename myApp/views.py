@@ -14,9 +14,9 @@ def home(request):
         form = productRegistration(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Product added successfully.')
             return redirect('/list')
-    form = productRegistration()
+    else:
+        form = productRegistration()
     return render(request,'myApp/home.html', {'form':form})
 
 def loginPage(request):
@@ -41,7 +41,7 @@ def loginPage(request):
             user = authenticate(request, username=username, password=password)
             if (user is not None) and (verify):
                 login(request, user)
-                return redirect('login')
+                return redirect('list')
             elif (user is not None) and (not verify):
                 messages.info(request, 'Please fill the Recaptcha.')
             else:
