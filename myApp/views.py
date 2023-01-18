@@ -10,13 +10,16 @@ import json
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
-    if request.method == "POST":
-        form = productRegistration(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/list')
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            form = productRegistration(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('/list')
+        else:
+            form = productRegistration()
     else:
-        form = productRegistration()
+        messages.info(request, 'You need to Sign up/Login first in order to add your products.')
     return render(request,'myApp/home.html', {'form':form})
 
 def loginPage(request):
@@ -51,9 +54,9 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('login')
+    return redirect('list')
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def list(request):
     products = None
     categories = Category.get_all_categories()
