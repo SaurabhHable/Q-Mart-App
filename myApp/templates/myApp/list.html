@@ -3,6 +3,31 @@
 {% block title %}
     Q-Mart Products
 {% endblock %}
+{% block styling %}
+  #desc{
+    line-height: 28px;
+    height: 25px;
+    overflow: hidden;
+  }
+  .description-btn{
+    display: inline-block;
+    color: black;
+    background-color: cyan;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  .description-btn:hover{
+    box-shadow: 0 5px 5px red;
+  }
+  .box.showContent #desc{
+    height: auto;
+  }
+  .box.showContent a.description-btn{
+    background-color: red;
+  }
+{% endblock styling %}
 
 {% block content %}
 {% for msg in messages %}
@@ -10,7 +35,7 @@
 {% endfor %}
 <div class="container-fluid mt-3">
     <div class="row">
-      {% comment %} Filter {% endcomment %}
+      <!-- Filter -->
       <div class="col-lg-3 mx-auto">
         <h1 class="text-center">Categories</h1>
         <!-- Hover added -->
@@ -19,7 +44,6 @@
            {% for ctgry in categories %}
            <a href="?category={{ctgry.id}}" class="list-group-item list-group-item-action">{{ctgry.name}}</a>
            {% endfor %}
-          
         </div>
       </div>
       {% comment %} All products display {% endcomment %}
@@ -38,14 +62,13 @@
                             {{ prod.name }}                      
                         </h5>
                     </div>
-                    <a class="btn btn-sm btn-info" data-bs-toggle="collapse" href="#eg" role="button" aria-expanded="false" aria-controls="eg">
-                      Description
-                    </a>
-                    <div class="collapse" id="eg">
-                      <div class="card card-body">
-                        {{prod.description}}
+                    
+                      <div class="card-body">
+                        <div class="box">
+                          <p class="card-text" id="desc">{{prod.description}}</p>
+                          <a href="javascript:void();" class="description-btn">Description</a>
+                        </div>
                       </div>
-                    </div>
                     <div class="card-footer text-muted d-flex justify-content-end">
                       {{prod.availability}}
                     </div>
