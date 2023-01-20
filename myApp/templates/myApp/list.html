@@ -30,9 +30,6 @@
 {% endblock styling %}
 
 {% block content %}
-{% for msg in messages %}
-<p>{{msg}}</p>
-{% endfor %}
 <div class="container-fluid mt-3">
     <div class="row">
       <!-- Filter -->
@@ -46,7 +43,7 @@
            {% endfor %}
         </div>
       </div>
-      {% comment %} All products display {% endcomment %}
+      <!-- All products display -->
       <div id="allproducts" class="col-lg-9 mx-auto">
         <h1 class="text-center">Display of all the products</h1>
         <div class="row  mx-auto">
