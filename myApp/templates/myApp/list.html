@@ -19,13 +19,14 @@
     margin-top: 10px;
   }
   .description-btn:hover{
-    box-shadow: 0 5px 5px red;
+    box-shadow: 0 5px 5px white;
   }
   .box.showContent #desc{
     height: auto;
   }
   .box.showContent a.description-btn{
-    background-color: red;
+    background-color: gray;
+    color: white;
   }
 {% endblock styling %}
 
@@ -56,7 +57,7 @@
                   <img src="{{prod.image.url}}" alt="{{prod.name}}" class="rounded mx-auto d-block" height="300px" title="{{prod.name}}">
                     <div>
                         <h5 class="card-title text-center">
-                            <a href="product/{{prod.id}}">{{ prod.name }}</a>
+                            <a href="product/{{prod.id}}" class="link-dark">{{ prod.name | truncatewords:5 }}</a>
                         </h5>
                     </div>
                     

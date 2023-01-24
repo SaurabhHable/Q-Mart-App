@@ -1,11 +1,47 @@
 {% extends 'myApp/base.html' %}
+{% block title %}
+Q-Mart Product Details
+{% endblock title %}
+
+{% block styling %}
+.prod-detail{
+text-decoration: italic
+}
+{% endblock styling %}
 
 {% block content %}
-<div class="container">
-    <h1>{{product.name}}</h1>
-    <h1>{{product.availability}}</h1>
-    <h1>{{product.description}}</h1>
-    <img src="{{product.image.url}}" alt="{{product.name}}" class="rounded mx-auto d-block" title="{{product.name}}">
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row">
+                <img src="{{product.image.url}}" alt="{{product.name}}" title="{{product.name}}" >
+            </div>
+        </div>
+        <div class="col-md-1 d-flex" style="height: auto;">
+            <div class="vr"></div>
+          </div>
+        <div class="col-md-8 prod-info">
+            <h5>Name:</h5>
+            <p class="prod-detail">
+                {{product.name}}
+            </p>
+            <hr>
+            <h5>Price:</h5>
+            <p class="prod-detail">
+                <b>&#8377;</b> {{product.price}} /-
+            </p>
+            <hr>
+            <h5>About the product:</h5>
+            <p class="prod-detail">
+                {{product.description}}
+            </p>
+            <hr>
+            <h5>Status:</h5>
+            <p class="prod-detail">
+                {{product.availability}}
+            </p>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
