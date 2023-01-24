@@ -69,3 +69,10 @@ def list(request):
     data['products'] = products
     data['categories'] = categories
     return render(request,'myApp/list.html', data)
+
+def productDetails(request, id):
+    product=Product.objects.filter(id = id).first()
+    context={
+        'product':product
+    }
+    return render(request, 'myApp/productDetail.html', context)
