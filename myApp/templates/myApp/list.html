@@ -16,7 +16,7 @@
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 8px;
-    margin-top: 10px;
+    margin-top: 0.1px;
   }
   .description-btn:hover{
     box-shadow: 0 5px 5px white;
@@ -65,6 +65,10 @@
                         <div class="box">
                           <p class="card-text" id="desc">{{prod.description}}</p>
                           <a href="javascript:void();" class="description-btn">Description</a>
+                          <a href="{% url 'updateProd' prod.id %}" class="btn btn-outline-info btn-sm">Update</a>
+                        </div>
+                        <div>
+                          
                         </div>
                       </div>
                     <div class="card-footer text-muted d-flex justify-content-end">

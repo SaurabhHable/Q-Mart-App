@@ -11,7 +11,7 @@ class productRegistration(forms.ModelForm):
             'name' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Mention the product name'}),
             'description' : forms.Textarea(attrs={'class':'form-control form-control-sm', 'placeholder':'Mention product details'}),
             'price' : forms.NumberInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Mention the price'}),
-            'availability' : forms.TextInput(attrs={'class':'form-control form-control-sm', 'placeholder':'Mention if the product is available or not'}),
+            'availability' : forms.Select(attrs={'class':'form-control form-control-sm', 'placeholder':'Mention if the product is available or not'}),
             'category' : forms.Select(attrs={'class':'form-control form-control-sm'}),
         }
 '''

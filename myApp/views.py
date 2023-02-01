@@ -76,3 +76,17 @@ def productDetails(request, id):
         'product':product
     }
     return render(request, 'myApp/productDetail.html', context)
+
+def updateProd(request, id):
+    product=Product.objects.get(id = id)
+    form = productRegistration(instance=product)
+    if request.method == 'POST':
+        form = productRegistration(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('list')
+    context={
+        'product':product,
+        'form':form
+    }
+    return render(request, 'myApp/update_prod.html', context)

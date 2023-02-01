@@ -1,0 +1,22 @@
+{% extends 'myApp/base.html' %}
+{% block title %}
+Q-Mart Product Details
+{% endblock title %}
+
+{% block content %}
+{% load widget_tweaks %}
+<div class="container">
+    <hr>
+    <div class="p-2 m-2">
+        <div class="form-group col-lg-5 mx-auto border rounded pt-4 pb-3">
+            <h3 class="alert alert-light border rounded text-center m-3">Update the product</h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Update" class="btn btn-sm btn-info" style="margin-left : 15px" id="btn-save">
+            </form>
+        </div>
+    </div>
+    <hr>
+</div>
+{% endblock  %}
