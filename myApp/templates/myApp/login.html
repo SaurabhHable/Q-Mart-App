@@ -15,6 +15,7 @@
             height: 100%;
             background: #e3f2fd !important;
         }
+        
         .user_card {
             height:300px;
             width: 500px;
@@ -30,9 +31,8 @@
             -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             border-radius: 5px;
-    
         }
-    
+
         .form_container {
             margin-top: 20px;
         }
@@ -75,18 +75,18 @@
                             <input type="text" name="username" placeholder="Username" class="form-control">
                         </div>
                         <div class="input-group mb-2">
-                                <input type="password" name="password" placeholder="Password" class="form-control">
+                            <input type="password" name="password" placeholder="Password" class="form-control">
                         </div>
     
                             <div class="d-flex justify-content-center mt-3 login_container">
                                 <div class="g-recaptcha" data-sitekey="6LdvJ_AjAAAAAI_rvrKZoM6-8dZG4egvY9ootHwN"></div>
-                                 <input class="btn btn-info" type="submit" value="Login">
-                               </div>
+                                <input class="btn btn-info" type="submit" value="Login">
+                            </div>
                     </form>
                 </div>
                 {% for msg in messages %}
                     <p id = "messages" class="text-center">{{msg}}</p>
-                    {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -90,3 +90,8 @@ def updateProd(request, id):
         'form':form
     }
     return render(request, 'myApp/update_prod.html', context)
+
+def deleteProd(request, id):
+    product=Product.objects.get(id = id)
+    product.delete()
+    return redirect('list')

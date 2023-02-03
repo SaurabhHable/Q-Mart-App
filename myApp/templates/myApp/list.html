@@ -3,6 +3,7 @@
 {% block title %}
     Q-Mart Products
 {% endblock %}
+
 {% block styling %}
   #desc{
     line-height: 28px;
@@ -57,18 +58,14 @@
                   <img src="{{prod.image.url}}" alt="{{prod.name}}" class="rounded mx-auto d-block" height="300px" title="{{prod.name}}">
                     <div>
                         <h5 class="card-title text-center">
-                            <a href="product/{{prod.id}}" class="link-dark">{{ prod.name | truncatewords:5 }}</a>
+                            <a href="{% url 'prodDetails' prod.id %}" class="link-dark">{{ prod.name | truncatewords:5 }}</a>
                         </h5>
                     </div>
-                    
                       <div class="card-body">
                         <div class="box">
                           <p class="card-text" id="desc">{{prod.description}}</p>
                           <a href="javascript:void();" class="description-btn">Description</a>
-                          <a href="{% url 'updateProd' prod.id %}" class="btn btn-outline-info btn-sm">Update</a>
-                        </div>
-                        <div>
-                          
+                          <a href="{% url 'prodDetails' prod.id %}" class="btn btn-info">Details</a>
                         </div>
                       </div>
                     <div class="card-footer text-muted d-flex justify-content-end">
@@ -77,7 +74,6 @@
                 </div>
             </div>
           {% endfor %}
-            
         </div>
       </div>
     </div>

@@ -4,13 +4,14 @@ Q-Mart Product Details
 {% endblock title %}
 
 {% block styling %}
-.prod-detail{
-text-decoration: italic
-}
+.prod-actions a{
+    margin-right: 5px;
+    }
 {% endblock styling %}
 
 {% block content %}
 <div class="container my-4">
+    <hr>
     <div class="row">
         <div class="col-md-3">
             <div class="row">
@@ -19,7 +20,7 @@ text-decoration: italic
         </div>
         <div class="col-md-1 d-flex" style="height: auto;">
             <div class="vr"></div>
-          </div>
+        </div>
         <div class="col-md-8 prod-info">
             <h5>Name:</h5>
             <p class="prod-detail">
@@ -40,8 +41,16 @@ text-decoration: italic
             <p class="prod-detail">
                 {{product.availability}}
             </p>
+            <hr>
+            <p class="prod-actions">
+                <h5>Action:</h5>
+                <a href="{% url 'home' %}" class="btn btn-outline-info btn-sm">Add</a>
+                <a href="{% url 'updateProd' product.id %}" class="btn btn-outline-primary btn-sm">Update</a>
+                <a href="{% url 'deleteProd' product.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+            </p>
         </div>
     </div>
+    <hr>
 </div>
 
 {% endblock %}
