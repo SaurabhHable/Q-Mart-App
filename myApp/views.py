@@ -15,7 +15,7 @@ def home(request):
             form = productRegistration(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
-                return redirect('/list')
+                return redirect('list')
         else:
             form = productRegistration()
     else:

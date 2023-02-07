@@ -13,13 +13,18 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+AVAIL = (
+    ("Available","Available"),
+    ("Not Available","Not Available"),
+)
+
 class Product(models.Model):
     image=models.ImageField(null=True, blank=True, upload_to='my_imgs')
     name=models.CharField(max_length=255)
     description=models.TextField()
     category=models.ForeignKey(Category, on_delete=models.CASCADE, default=0)
     price=models.DecimalField(max_digits=6, decimal_places=2)
-    availability=models.CharField(max_length=70)
+    availability=models.CharField(max_length=70, choices=AVAIL, default='Available')
     date=models.DateTimeField(auto_now_add=True)
 
     @staticmethod

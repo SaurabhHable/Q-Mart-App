@@ -5,6 +5,9 @@ class productRegistration(forms.ModelForm):
     class Meta:
         model = Product
         fields = [ 'id','image', 'name', 'description', 'price', 'availability','category']
+        widgets = {
+        'availability' : forms.Select(attrs={'class':'form-control form-control-sm', 'placeholder':'Mention if the product is available or not'}),
+        }
 '''
         widgets = {
             'image' : forms.FileInput(attrs={'class':'form-control form-control-sm', 'width':"300", 'height':"300"}),
