@@ -55,7 +55,7 @@
                   <div class="card-header">
                     <span class="d-flex justify-content-start"><b>&#8377; {{prod.price}} /-</b></span>
                   </div>
-                  <img src="{{prod.image.url}}" alt="{{prod.name}}" class="rounded mx-auto d-block" height="300px" title="{{prod.name}}">
+                  <img src="{{prod.image.url}}" alt="{{prod.name}}" class="rounded mx-auto d-block card-img-top" height="330px" title="{{prod.name}}">
                     <div>
                         <h5 class="card-title text-center">
                             <a href="{% url 'prodDetails' prod.id %}" class="link-dark">{{ prod.name | truncatewords:5 }}</a>
@@ -64,7 +64,7 @@
                       <div class="card-body">
                         <div class="box">
                           <p class="card-text" id="desc">{{prod.description}}</p>
-                          <a href="javascript:void();" class="description-btn">Description</a>
+                          <a href="javascript:void(0)" class="description-btn">Description</a>
                           <a href="{% url 'prodDetails' prod.id %}" class="btn btn-info">Details</a>
                         </div>
                       </div>
